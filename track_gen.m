@@ -1,6 +1,7 @@
 %
 % Generates complete model of the track
 %
+
 test_size = 300;
 step_size = 0.001;
 % tb = (sqrt(2*r*step_size))/v;
