@@ -11,7 +11,7 @@ time_at_steps = csvread('time_at_steps.csv');
 r = 0.04;
 max_step = 0.001;
 sample_size = 666;
-step_size = (max_step).*rand(350,1) % Random step between 0 & 1mm
+step_size = (max_step).*rand(350,1); % Random step between 0 & 1mm
 A = [1,-1];
 rand_neg = A(randi([1,2],1,sample_size));
 
@@ -23,7 +23,7 @@ prev_time = 0;
 prev_disp = 0;
 
 %% Main loop
-for i=1:sample_size 
+for i=2:sample_size 
     
     % set values at time of impact
     if mod(i,2)==1

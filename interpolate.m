@@ -5,7 +5,7 @@
 
 function [tq, xq] = interpolate(t, x)
 
-t(end);
+%t(end);
 
 % Interpolated time resolution
 tq = (0:0.0001:t(end));
