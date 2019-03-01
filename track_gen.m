@@ -44,6 +44,11 @@ end
 
 [lin_t, lin_x]=interpolate(run_time, run_disp);
 
+% initializing time and displacement vectors for SIMULINK model
+var.time = lin_t;
+var.signals.values = lin_x';
+var.signals.dimensions = 1;
+
 %% Data logging
 
 % figure
