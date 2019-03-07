@@ -8,8 +8,8 @@ clear;
 
 %% General Parameters
 %Spring constants 
-k = 50000; %(N/m), spring constant for suspension system
-c = 100; %(Ns/m), damping coefficient for suspension system
+k = 5000; %(N/m), spring constant for suspension system
+c = 0.00000100; %(Ns/m), damping coefficient for suspension system
 
 %Masses of the wheels and pod (kg)
 m_wheel = 0.25; % mass of one suspension wheel 
