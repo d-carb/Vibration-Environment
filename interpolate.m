@@ -28,7 +28,7 @@ function [tq, xq, vq] = interpolate(t, x, ts, vs)
 %t(end);
 
 % Interpolated time resolution
-tq = (0:0.0001:t(end));
+tq = (0:0.00001:t(end));
 
 % Interpolated displacement value
 xq = interpn(t, x,tq,'linear');
