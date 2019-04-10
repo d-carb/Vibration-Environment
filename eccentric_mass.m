@@ -9,7 +9,7 @@ clear all
 
 pod_mass = 300;
 mount_mass = 20;
-ecc_mass = 1.2;
+ecc_mass = 0.07;
 sys_mass = 170;
 sys_mass = pod_mass+mount_mass+ecc_mass
 ecc_dist = 0.04;
@@ -21,8 +21,9 @@ sys_freq = sqrt(sprg_const/sys_mass)
 freq_ratio = rot_freq/sys_freq
 damp_ratio = damp_const/(2*sys_mass*sys_freq)
 fre_hz = rad_hertz(sys_freq)
-
+ecc_force = ecc_mass*ecc_dist*rot_freq^2
 %% Transmitted force
+
 
 comm_ratio = 2*damp_ratio*freq_ratio; % Commonly used expression
 
