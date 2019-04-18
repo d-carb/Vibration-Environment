@@ -4,15 +4,17 @@
 %Parameters for suspension model using SIMULINK
 
 %% Clear all 
-clear;
+% clear;
 
 %% General Parameters
 %Spring constants 
 k = 70000; %(N/m), spring constant for suspension system
+% k = k_sim; % Take value from optimisation script
 k1 = k;
 k2 = k;
 
-c = 100; %(Ns/m), damping coefficient for suspension system
+c = 10; %(Ns/m), damping coefficient for suspension system
+% c = c_sim; % Take value from optimisation script
 c1 = c;
 c2 = c;
 
