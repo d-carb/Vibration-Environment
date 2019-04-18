@@ -17,7 +17,7 @@ step_size = (max_step-min_step).*rand(350,1)+min_step; % Random step between 0 &
 A = [1,-1];
 rand_neg = A(randi([1,2],1,sample_size));
 track_filename = "track01.csv";
-newtrack = 1; % If=1 make new track, else read from file
+newtrack = 0; % If=1 make new track, else read from file
 
 %% Initial values & blank arrays
 tb = zeros(1,size(speed_at_steps,2));
@@ -74,10 +74,10 @@ else
     % read values from file
     [lin_t, lin_x, lin_v] = split_array(csvread(track_filename));
 end
-
-minnan = min(find(all(isnan(lin_v),1)))
-
-fprintf("First nan index: %d \n", lin_v(minnan-1))
+% 
+% minnan = min(find(all(isnan(lin_v),1)));
+% 
+% fprintf("First nan index: %d \n", lin_v(minnan-1))
 
 % Fix NaN issues
 lin_v(isnan(lin_v))=lin_v(minnan-1);
