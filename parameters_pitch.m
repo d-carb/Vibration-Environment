@@ -8,7 +8,7 @@
 
 %% General Parameters
 %Spring constants 
-k = 70000; %(N/m), spring constant for suspension system
+k = 7000; %(N/m), spring constant for suspension system
 % k = k_sim; % Take value from optimisation script
 k1 = k;
 k2 = k;

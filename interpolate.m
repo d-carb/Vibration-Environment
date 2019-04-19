@@ -3,7 +3,7 @@
 % HYPED, Technical Director
 % Interpolate the values in time given initial and end conditions. 
 
-function [tq, xq, vq] = interpolate(t, x, ts, vs)
+function [tq, xq, vq, aq] = interpolate(t, x, ts, vs, as)
 
 %t(end);
 
@@ -13,6 +13,7 @@ tq = (0:0.001:t(end));
 % Interpolated displacement value
 xq = interpn(t, x,tq,'linear');
 vq = interpn(ts, vs,tq,'linear');
+aq = interpn(ts, as, tq, 'linear');
 
 
 % vq=0;
