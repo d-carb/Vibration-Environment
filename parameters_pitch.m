@@ -13,14 +13,14 @@ k = 7000; %(N/m), spring constant for suspension system
 k1 = k;
 k2 = k;
 
-c = 10; %(Ns/m), damping coefficient for suspension system
+c = 100; %(Ns/m), damping coefficient for suspension system
 % c = c_sim; % Take value from optimisation script
 c1 = c;
 c2 = c;
 
 %Masses of the wheels and pod (kg)
 m_wheel = 0.25; % mass of one suspension wheel 
-m_pod = 305; %mass of just pod and internals 
+m_pod = 300; %mass of just pod and internals 
 
 %Moments of inertia
 Iyy = 115; %% about pitch (theta) axis 
@@ -39,7 +39,7 @@ step_size = 0.001;
 g = 9.81; 
 
 %Wheel radius
-r = 0.04;
+r = 0.03;
 
 %Velocity (m/s)
 v = 10;
