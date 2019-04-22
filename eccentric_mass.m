@@ -7,16 +7,16 @@ clear all
 %% Global Parameters
 % All values in kg, m, rad/s
 
-pod_mass = 300;
-mount_mass = 20;
-ecc_mass = 0.07;
-sys_mass = 170;
-sys_mass = pod_mass+mount_mass+ecc_mass
-ecc_dist = 0.04;
+pod_mass = 0;
+mount_mass = 2.05;
+ecc_mass = 0.17;
+sys_mass = 2.05;
+% sys_mass = pod_mass+mount_mass+ecc_mass
+ecc_dist = 0.011;
 % sprg_const = 131345;
-sprg_const = 100000000;
+sprg_const = 10000;
 damp_const = 0;
-rot_freq = 144;
+rot_freq = 100;
 sys_freq = sqrt(sprg_const/sys_mass)
 freq_ratio = rot_freq/sys_freq
 damp_ratio = damp_const/(2*sys_mass*sys_freq)
