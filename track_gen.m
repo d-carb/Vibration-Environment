@@ -75,7 +75,7 @@ if newtrack == 1
     accel = [accel, 0];
 
     wt_transfer = weight_shift(accel);
-    wt_transfer = wt_transfer./0.5;
+    wt_transfer = wt_transfer;
 
     [lin_t, lin_x, lin_v, lin_sft]=interpolate(run_time, run_disp, time_at_steps, speed_at_steps, wt_transfer);
 
@@ -106,7 +106,7 @@ minnanw = min(find(all(isnan(lin_sft),1)));
 
 % Fix NaN issues
 lin_v(isnan(lin_v))=lin_v(minnanv-1);
-lin_sft(isnan(lin_sft))=lin_sft(minnanv-1)
+lin_sft(isnan(lin_sft))=lin_sft(minnanv-1);
 
 step_delay=0;
 for i = 1: size(lin_v,2)
@@ -134,34 +134,57 @@ weight_sh_f.signals.dimensions = 1;
 
 % initializing rear weight shift for SIMULINK model
 weight_sh_r.time = lin_t;
-weight_sh_r.signals.values = 1./lin_sft';
+weight_sh_r.signals.values = 1.-lin_sft';
 weight_sh_r.signals.dimensions = 1;
 
 
 %% Data logging
 
-% figure
+fig = figure;
+left_color = [0 .0 0];
+right_color = [0 0 0];
+set(fig,'defaultAxesColorOrder',[left_color; right_color]);
 % plot(t, x,'o',xq,vq,'-'); % with dots
-% plot(run_time, run_disp, lin_t, lin_x, 'Color','blue'); % no dots
+ax = gca;
+ax.FontSize = 16; 
+set(gcf,'color','w');
+plot(run_time, run_disp, lin_t, lin_x, 'Color','blue', 'linewidth', 2); % no dots
+ax = gca;
+ax.FontSize = 14; 
+% yyaxis left;
+ylabel('Vertical Displacement (m)', 'FontSize', 20,'Color','blue')
+xlabel('Run Time (s)', 'FontSize', 20)
+% 
+% yyaxis right;
+% 
+% plot(lin_t, lin_v,'-','Color','red');
+% ylabel('Run Speed (m/s)', 'FontSize', 20, 'Color','red')
+
+
+% right_color = [0 .5 .5];
+% set(figure,'defaultAxesColorOrder',['blue'; 'red']);
+
+% plot(freq_rat,TR,'LineWidth',2)
+
+
+% xlabel("Frequency Ratio", 'FontSize', 20);
+% % xlabel("Damping Constant (Ns/m)")
+% ylabel("Transmissibility Ratio", 'FontSize', 20);
+
+% figure;
+% plot(lin_t, lin_v, '-','LineWidth',2);
+% ax = gca;
+% ax.FontSize = 14; 
+% set(gcf,'color','w');
 % 
 % yyaxis left;
-% ylabel('Vertical Displacement (m)', 'FontSize', 20,'Color','blue')
+% ylabel('Run Speed (m/s)', 'FontSize', 20,'Color','blue')
 % xlabel('Run Time (s)', 'FontSize', 20)
 % 
 % yyaxis right;
-% plot(lin_t, lin_v,'-');
-% ylabel('Run Speed (m/s)', 'FontSize', 20)
-
-figure;
-plot(lin_t, lin_v, '-');
-yyaxis left;
-ylabel('Run Speed (m/s)', 'FontSize', 20,'Color','blue')
-xlabel('Run Time (s)', 'FontSize', 20)
-
-yyaxis right;
-plot(lin_t, lin_sft, '-');
-
-ylabel('Weight Transfer', 'FontSize', 20)
+% plot(lin_t, lin_sft, '-','LineWidth',2);
+% 
+% ylabel('Load on Front Wheel', 'FontSize', 20)
 
 
 
